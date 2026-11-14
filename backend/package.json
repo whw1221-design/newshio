@@ -1,0 +1,30 @@
+{
+  "name": "crud-test-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Express REST API backed by Supabase (Postgres)",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:setup": "node src/db/setup.js",
+    "seed": "node src/db/seed.js",
+    "migrate:sqlite": "node src/db/migrate-sqlite.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "better-sqlite3": "^11.10.0"
+  }
+}

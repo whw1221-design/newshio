@@ -1,0 +1,17 @@
+{
+  "name": "crud-test",
+  "version": "1.0.0",
+  "private": true,
+  "description": "React + Material UI CRUD app served by a single Express + Supabase process",
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "db:setup": "npm run db:setup --prefix backend",
+    "seed": "npm run seed --prefix backend",
+    "migrate:data": "npm run migrate:sqlite --prefix backend",
+    "build": "npm run build --prefix frontend",
+    "start": "npm start --prefix backend",
+    "serve": "npm run build && npm start",
+    "dev:api": "npm run dev --prefix backend",
+    "dev:web": "npm run dev --prefix frontend"
+  }
+}

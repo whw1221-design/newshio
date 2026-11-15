@@ -18,13 +18,14 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "crud-test": "file:..",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "helmet": "^8.0.0",
     "morgan": "^1.10.0",
     "pg": "^8.13.1"
   },
-  "devDependencies": {
+  "optionalDependencies": {
     "better-sqlite3": "^11.10.0"
   }
 }

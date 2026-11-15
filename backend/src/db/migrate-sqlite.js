@@ -11,8 +11,21 @@ import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import Database from 'better-sqlite3';
 import { pool, withTransaction } from './index.js';
+
+// better-sqlite3 is an *optional* dependency: it is only needed for this
+// local, one-off migration. Loading it lazily keeps the production install
+// free of native modules that may not have prebuilt binaries for the host's
+// Node version.
+let Database;
+try {
+  ({ default: Database } = await import('better-sqlite3'));
+} catch {
+  console.error('better-sqlite3 is not installed, so the SQLite migration cannot run.');
+  console.error('Install it locally with:  npm install --no-save --prefix backend better-sqlite3');
+  console.error('Skip this step if you do not need to import backend/data/shopdesk.db.');
+  process.exit(1);
+}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 

@@ -115,6 +115,12 @@ npm run migrate:data
 This replaces the current Supabase rows. Password hashes and order dates are
 preserved. Set `SQLITE_FILE` in `backend/.env` to use a different file.
 
+> `better-sqlite3` is declared as an **optional** dependency, because only this
+> local migration needs it. If it is missing (for example on a host whose Node
+> version has no prebuilt binary), install it just for the migration:
+> `npm install --no-save --prefix backend better-sqlite3`. Nothing else at
+> runtime, and no deploy step, depends on it.
+
 ## Commands
 
 | Command | What it does |
@@ -252,3 +258,4 @@ curl -X POST http://localhost:5000/api/add_order \
 | `Database schema is not initialised` | Run `npm run db:setup` |
 | Seed reports missing tables | Run `npm run db:setup` first |
 | Frontend build missing at `/` | Run `npm run build` |
+| Build fails compiling `better-sqlite3` (node-gyp / V8 errors) | Only the legacy migration needs it; it is optional. Install it locally for the migration, or pin an older Node on the host |
